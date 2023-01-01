@@ -12,4 +12,4 @@ class User(Base):
     hashed_password = Column(LargeBinary)
     salt = Column(LargeBinary)
 
-    items = relationship("Item", back_populates="owner")
+    # items = relationship("Item", back_populates="owner")

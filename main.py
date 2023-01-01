@@ -31,8 +31,8 @@ def create_user(user: schemas.UserCreate, db: Session = Depends(get_db)):
     db_user = crud.get_user_by_email(db, email=user.email)
     if db_user:
         raise HTTPException(status_code=400, detail="Email already registered")
-    crud.create_user(db=db, user=user)
-    return Response(status_code=status.HTTP_200_OK)
+    return crud.create_user(db=db, user=user)
+    # return Response(status_code=status.HTTP_200_OK)
 
 
 @app.get("/user/info", response_model=List[schemas.User])
@@ -42,5 +42,5 @@ def get_users(device_id: int, db: Session = Depends(get_db)):
 
 
 # To run locally
-if __name__ == '__main__':
-    uvicorn.run(app, host='0.0.0.0', port=5432)
+# if __name__ == '__main__':
+    # uvicorn.run(app, port=5432)
